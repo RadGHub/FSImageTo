@@ -15,6 +15,7 @@ namespace FSImageTo
 {
 	public partial class Form1 : Form
 	{
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -22,15 +23,12 @@ namespace FSImageTo
 
 		private void ScanBtn_Click(object sender, EventArgs e)
 		{
-			string currentDir = "C:\\Users\\arche\\source\\repos\\TestDirectories\\1";
-			DirectoryInfo df = new DirectoryInfo(currentDir);
-			FsDirectoryInfo fsInfo = new FsDirectoryInfo(df);
-			List<FsInfo> list = fsInfo.GetAllDirectoriesAndFiles();
+			List<FsInfo> list = InitListOfAllEntities();
 			foreach (var entity in list)
 			{
 				if (entity.GetType() == typeof(FsFileInfo))
 				{
-					dataGridView1.Rows.Add(entity.Type(), entity.Name, entity.Size+" b", entity.MimeType) ;
+					dataGridView1.Rows.Add(entity.Type(), entity.Name, entity.Size + " b", entity.MimeType);
 				}
 				else if (entity.GetType() == typeof(FsDirectoryInfo))
 				{
@@ -38,11 +36,24 @@ namespace FSImageTo
 				}
 			}
 		}
-		
+
+		private static List<FsInfo> InitListOfAllEntities()
+		{
+			string currentDir = "C:\\Users\\arche\\source\\repos\\TestDirectories\\1";
+			DirectoryInfo df = new DirectoryInfo(currentDir);
+			FsDirectoryInfo fsInfo = new FsDirectoryInfo(df);
+			List<FsInfo> list = fsInfo.GetAllDirectoriesAndFiles();
+			return list;
+		}
+
 		private void SaveMenuItem_Click(object sender, EventArgs e)
 		{
-			
-			
+			saveFileDialog1.Filter = "Html files (*.html)|*.html";
+			if (saveFileDialog1.ShowDialog()==DialogResult.OK)
+			{
+				SaveToHtml saveTo = new SaveToHtml(InitListOfAllEntities());
+				saveTo.SaveHtmlDocument(saveFileDialog1.InitialDirectory, saveFileDialog1.FileName);
+			}
 		}
 	}
 }

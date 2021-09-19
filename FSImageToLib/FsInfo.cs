@@ -10,7 +10,7 @@ namespace FSImageToLib
 	{
 
 		public virtual string Name { get; set; }
-		public virtual float Size { get; set; }
+		public virtual long Size { get; set; }
 
 		public virtual string MimeType{ get; set; }
 

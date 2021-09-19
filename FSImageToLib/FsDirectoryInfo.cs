@@ -7,6 +7,7 @@ using MimeMapping;
 
 namespace FSImageToLib
 {
+
 	public class FsDirectoryInfo :FsInfo
 	{
 		private List<FsInfo> fsInfos = new();
