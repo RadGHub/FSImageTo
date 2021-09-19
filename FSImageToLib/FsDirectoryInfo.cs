@@ -28,6 +28,11 @@ namespace FSImageToLib
 
 		public override string MimeType { get=>MimeType="";}
 
+		public override string Type()
+		{
+			return "Папка";
+		}
+
 		public List<FsInfo> GetAllDirectoriesAndFiles()
 		{
 			fsInfos = Directory.GetAllEntities().ToFsInfo(Directory);

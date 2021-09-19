@@ -30,13 +30,19 @@ namespace FSImageTo
 			{
 				if (entity.GetType() == typeof(FsFileInfo))
 				{
-					dataGridView1.Rows.Add($"файл   {entity.Name}   {entity.Size}   {entity.MimeType}");
+					dataGridView1.Rows.Add(entity.Type(), entity.Name, entity.Size+" b", entity.MimeType) ;
 				}
 				else if (entity.GetType() == typeof(FsDirectoryInfo))
 				{
-					dataGridView1.Rows.Add($"папка   {entity.Name}   {entity.Size}");
+					dataGridView1.Rows.Add(entity.Type(), entity.Name, entity.Size + " b");
 				}
 			}
+		}
+		
+		private void SaveMenuItem_Click(object sender, EventArgs e)
+		{
+			
+			
 		}
 	}
 }

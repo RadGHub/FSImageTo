@@ -14,5 +14,10 @@ namespace FSImageToLib
 
 		public virtual string MimeType{ get; set; }
 
+		public virtual string Type()
+		{
+			return "Общий";
+		}
+
 	}
 }

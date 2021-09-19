@@ -6,8 +6,11 @@ using MimeMapping;
 namespace FSImageToLib
 {
 	public class FsFileInfo : FsInfo
-	{ 
-	
+	{
+		public override string Type()
+		{
+			return "Файл";
+		}
 	}
 
 }
