@@ -39,5 +39,12 @@ namespace FSImageToLib
 			fsInfos = Directory.GetAllEntities().ToFsInfo(Directory);
 			return fsInfos;
 		}
+		public int CountFiles()
+		{
+			var list = Directory.GetAllEntities().ToFsInfo(Directory).Where(item=>item.Type()=="Файл");
+
+			return list.Count();
+		}
+
 	}
 }

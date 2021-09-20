@@ -11,6 +11,8 @@ namespace FSImageToLib
 		{
 			return "Файл";
 		}
+
+		
 	}
 
 }

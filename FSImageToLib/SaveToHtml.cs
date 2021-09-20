@@ -12,18 +12,24 @@ namespace FSImageToLib
 {
 	public class SaveToHtml
 	{
+		
 		public List<FsInfo> DataList { get; set; }
 		public SaveToHtml(List<FsInfo> info)
 		{
 			DataList = info;
 		}
-		public void SaveHtmlDocument(string outputDir, string documentName)
+		public void SaveHtmlDocument(string outputDir, string documentName, List<FsInfo> list,
+			List<FsFileInfo> fileList, string inputMime)
 		{
 			string documentPath = Path.Combine(outputDir,documentName);
 
 			using (var document = new HTMLDocument())
 			{
-				string bootstrapHead = string.Format("<head><link href = \"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css\" rel = \"stylesheet\" integrity = \"sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x\" crossorigin = \"anonymous\"></head>");
+				int listCount = list.Count;
+				int fileListCount = fileList.Count;
+				int countItemsInMime = fileList.CountMimeTypesInGroup(inputMime);
+				string countItemsInMimePercent = (100 / (float)fileListCount * countItemsInMime).ToString("#.##");
+				string mediumSize = fileList.GetSize(inputMime).ToString("#.##");
 
 				var body = document.Body;
 				var link = document.CreateElement("link") as HTMLLinkElement;
@@ -31,8 +37,59 @@ namespace FSImageToLib
 				link.Rel = "stylesheet";
 				document.Body.AppendChild(link);
 
+				var mainDiv = document.CreateElement("div") as HTMLDivElement;
+				var firstRowDiv = document.CreateElement("div") as HTMLDivElement;
+				var firstColDiv = document.CreateElement("div") as HTMLDivElement;
+				var secondColDiv = document.CreateElement("div") as HTMLDivElement;
+				var secondRowDiv = document.CreateElement("div") as HTMLDivElement;
+				var thirdColDiv = document.CreateElement("div") as HTMLDivElement;
+				var forthColDiv = document.CreateElement("div") as HTMLDivElement;
+				var fifthColDiv = document.CreateElement("div") as HTMLDivElement;
+				var sixthColDiv = document.CreateElement("div") as HTMLDivElement;
+				
+
+				mainDiv.ClassName = "container h1";
+				mainDiv.TextContent = $"HTML Отчет по тестовому заданию FileSystem Info App in Dotnet 5";
+
+				firstRowDiv.ClassName = "row";
+				
+				firstColDiv.ClassName = "col-sm h4";
+				firstColDiv.TextContent = $"Всего файлов - {listCount}";
+
+				secondColDiv.ClassName = "col-sm h4";
+				secondColDiv.TextContent = $"Папок - {listCount - fileListCount}";
+
+				thirdColDiv.ClassName = "col-sm h4";
+				thirdColDiv.TextContent = $"Файлов - {fileListCount}";
+
+				secondRowDiv.ClassName = "row";
+
+				forthColDiv.ClassName = "col-sm h4";
+				forthColDiv.TextContent = $"Mime тип - {inputMime}";
+
+				fifthColDiv.ClassName = "col-sm h4";
+				fifthColDiv.TextContent = $"Количество - {countItemsInMime} из {fileListCount} или {countItemsInMimePercent}%";
+
+				sixthColDiv.ClassName = "col-sm h4";
+				sixthColDiv.TextContent = $"Средний размер - {mediumSize} b";
+
+
+
+
+				firstRowDiv.AppendChild(firstColDiv);
+				firstRowDiv.AppendChild(secondColDiv);
+				firstRowDiv.AppendChild(thirdColDiv);
+
+				secondRowDiv.AppendChild(forthColDiv);
+				secondRowDiv.AppendChild(fifthColDiv);
+				secondRowDiv.AppendChild(sixthColDiv);
+
+				mainDiv.AppendChild(firstRowDiv);
+				mainDiv.AppendChild(secondRowDiv);
+				document.Body.AppendChild(mainDiv);
+
 				var table = document.CreateElement("table") as HTMLTableElement;
-				table.ClassName = "table table-dark table-striped";
+				table.ClassName = "table table-bordered border-primary table-striped";
 				var thead = document.CreateElement("thead") as HTMLTableSectionElement;
 				for (int i = 0; i < 1; i++)
 				{

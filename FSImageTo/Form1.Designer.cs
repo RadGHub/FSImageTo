@@ -39,6 +39,13 @@ namespace FSImageTo
 			this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ScanBtn = new System.Windows.Forms.Button();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.labelFileCount = new System.Windows.Forms.Label();
+			this.labelCount = new System.Windows.Forms.Label();
+			this.labelDirsCount = new System.Windows.Forms.Label();
+			this.comboBox = new System.Windows.Forms.ComboBox();
+			this.labelMimeName = new System.Windows.Forms.Label();
+			this.labelRelation = new System.Windows.Forms.Label();
+			this.labelMediumSize = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -57,12 +64,12 @@ namespace FSImageTo
             this.ColumnName,
             this.ColumnSyze,
             this.ColumnMime});
-			this.dataGridView1.Location = new System.Drawing.Point(169, 24);
+			this.dataGridView1.Location = new System.Drawing.Point(12, 132);
 			this.dataGridView1.MinimumSize = new System.Drawing.Size(300, 300);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 25;
-			this.dataGridView1.Size = new System.Drawing.Size(584, 451);
+			this.dataGridView1.Size = new System.Drawing.Size(741, 343);
 			this.dataGridView1.TabIndex = 2;
 			// 
 			// ColumnType
@@ -116,25 +123,106 @@ namespace FSImageTo
 			// SaveMenuItem
 			// 
 			this.SaveMenuItem.Name = "SaveMenuItem";
-			this.SaveMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.SaveMenuItem.Text = "Сохранить";
 			this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
 			// 
 			// ScanBtn
 			// 
+			this.ScanBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.ScanBtn.Location = new System.Drawing.Point(12, 24);
 			this.ScanBtn.Name = "ScanBtn";
-			this.ScanBtn.Size = new System.Drawing.Size(151, 109);
+			this.ScanBtn.Size = new System.Drawing.Size(150, 60);
 			this.ScanBtn.TabIndex = 0;
 			this.ScanBtn.Text = "Просканировать";
 			this.ScanBtn.UseVisualStyleBackColor = true;
 			this.ScanBtn.Click += new System.EventHandler(this.ScanBtn_Click);
+			// 
+			// labelFileCount
+			// 
+			this.labelFileCount.AutoSize = true;
+			this.labelFileCount.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelFileCount.Location = new System.Drawing.Point(184, 70);
+			this.labelFileCount.Name = "labelFileCount";
+			this.labelFileCount.Size = new System.Drawing.Size(119, 23);
+			this.labelFileCount.TabIndex = 4;
+			this.labelFileCount.Text = "Файлов - 0";
+			// 
+			// labelCount
+			// 
+			this.labelCount.AutoSize = true;
+			this.labelCount.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelCount.Location = new System.Drawing.Point(184, 24);
+			this.labelCount.Name = "labelCount";
+			this.labelCount.Size = new System.Drawing.Size(100, 23);
+			this.labelCount.TabIndex = 5;
+			this.labelCount.Text = "Всего - 0";
+			// 
+			// labelDirsCount
+			// 
+			this.labelDirsCount.AutoSize = true;
+			this.labelDirsCount.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelDirsCount.Location = new System.Drawing.Point(184, 47);
+			this.labelDirsCount.Name = "labelDirsCount";
+			this.labelDirsCount.Size = new System.Drawing.Size(119, 23);
+			this.labelDirsCount.TabIndex = 6;
+			this.labelDirsCount.Text = "Файлов - 0";
+			// 
+			// comboBox
+			// 
+			this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.comboBox.FormattingEnabled = true;
+			this.comboBox.Location = new System.Drawing.Point(13, 95);
+			this.comboBox.Name = "comboBox";
+			this.comboBox.Size = new System.Drawing.Size(740, 24);
+			this.comboBox.Sorted = true;
+			this.comboBox.TabIndex = 7;
+			this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+			// 
+			// labelMimeName
+			// 
+			this.labelMimeName.AutoEllipsis = true;
+			this.labelMimeName.AutoSize = true;
+			this.labelMimeName.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelMimeName.Location = new System.Drawing.Point(368, 24);
+			this.labelMimeName.Name = "labelMimeName";
+			this.labelMimeName.Size = new System.Drawing.Size(124, 23);
+			this.labelMimeName.TabIndex = 8;
+			this.labelMimeName.Text = "Mime тип - ";
+			// 
+			// labelRelation
+			// 
+			this.labelRelation.AutoSize = true;
+			this.labelRelation.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelRelation.Location = new System.Drawing.Point(368, 47);
+			this.labelRelation.Name = "labelRelation";
+			this.labelRelation.Size = new System.Drawing.Size(147, 23);
+			this.labelRelation.TabIndex = 9;
+			this.labelRelation.Text = "Количество - ";
+			// 
+			// labelMediumSize
+			// 
+			this.labelMediumSize.AutoSize = true;
+			this.labelMediumSize.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelMediumSize.Location = new System.Drawing.Point(368, 70);
+			this.labelMediumSize.Name = "labelMediumSize";
+			this.labelMediumSize.Size = new System.Drawing.Size(193, 23);
+			this.labelMediumSize.TabIndex = 10;
+			this.labelMediumSize.Text = "Средний размер - ";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(765, 487);
+			this.Controls.Add(this.labelMediumSize);
+			this.Controls.Add(this.labelRelation);
+			this.Controls.Add(this.labelMimeName);
+			this.Controls.Add(this.comboBox);
+			this.Controls.Add(this.labelDirsCount);
+			this.Controls.Add(this.labelCount);
+			this.Controls.Add(this.labelFileCount);
 			this.Controls.Add(this.ScanBtn);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.menuStrip1);
@@ -161,6 +249,13 @@ namespace FSImageTo
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSyze;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMime;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+		private System.Windows.Forms.Label labelFileCount;
+		private System.Windows.Forms.Label labelCount;
+		private System.Windows.Forms.Label labelDirsCount;
+		private System.Windows.Forms.ComboBox comboBox;
+		private System.Windows.Forms.Label labelMimeName;
+		private System.Windows.Forms.Label labelRelation;
+		private System.Windows.Forms.Label labelMediumSize;
 	}
 }
 
