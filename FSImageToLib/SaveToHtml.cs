@@ -54,7 +54,8 @@ namespace FSImageToLib
 				firstRowDiv.ClassName = "row";
 				
 				firstColDiv.ClassName = "col-sm h4";
-				firstColDiv.TextContent = $"Всего файлов - {listCount}";
+				
+				firstColDiv.TextContent = $"Всего - {listCount}";
 
 				secondColDiv.ClassName = "col-sm h4";
 				secondColDiv.TextContent = $"Папок - {listCount - fileListCount}";
@@ -72,7 +73,12 @@ namespace FSImageToLib
 
 				sixthColDiv.ClassName = "col-sm h4";
 				sixthColDiv.TextContent = $"Средний размер - {mediumSize} b";
-
+				if (inputMime == "")
+				{
+					forthColDiv.TextContent = $"Mime тип не выбран";
+					fifthColDiv.TextContent = $"Количество - {listCount} из {listCount} или 100%";
+					sixthColDiv.TextContent = $"";
+				}
 
 
 

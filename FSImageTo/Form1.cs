@@ -16,12 +16,8 @@ namespace FSImageTo
 	public partial class Form1 : Form
 	{
 		static string currentDir = Environment.CurrentDirectory;
-		static DirectoryInfo df = new DirectoryInfo(currentDir);
-		static FsDirectoryInfo fsInfo = new FsDirectoryInfo(df);
-		static List<FsInfo> list = fsInfo.GetAllDirectoriesAndFiles();
-		static List<FsFileInfo> fileList = list.ToFsFileInfo();
-		static string inputMime = "";
-
+		string inputMime = "";
+		
 		public Form1()
 		{
 
@@ -31,6 +27,10 @@ namespace FSImageTo
 
 		private void ScanBtn_Click(object sender, EventArgs e)
 		{
+			DirectoryInfo df = new DirectoryInfo(currentDir);
+			FsDirectoryInfo fsInfo = new FsDirectoryInfo(df);
+			List<FsInfo> list = fsInfo.GetAllDirectoriesAndFiles();
+			List<FsFileInfo> fileList = list.ToFsFileInfo();
 			dataGridView1.Rows.Clear();
 
 			foreach (var entity in list)
@@ -54,6 +54,10 @@ namespace FSImageTo
 
 		private void SaveMenuItem_Click(object sender, EventArgs e)
 		{
+			DirectoryInfo df = new DirectoryInfo(currentDir);
+			FsDirectoryInfo fsInfo = new FsDirectoryInfo(df);
+			List<FsInfo> list = fsInfo.GetAllDirectoriesAndFiles();
+			List<FsFileInfo> fileList = list.ToFsFileInfo();
 			saveFileDialog1.Filter = "Html files (*.html)|*.html";
 			if (saveFileDialog1.ShowDialog()==DialogResult.OK)
 			{
@@ -65,7 +69,11 @@ namespace FSImageTo
 		
 		private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			
+			DirectoryInfo df = new DirectoryInfo(currentDir);
+			FsDirectoryInfo fsInfo = new FsDirectoryInfo(df);
+			List<FsInfo> list = fsInfo.GetAllDirectoriesAndFiles();
+			List<FsFileInfo> fileList = list.ToFsFileInfo();
+
 			//переменные для оптимизации (чтоб не пересчитывать их заново для каждого label.text)
 			int fileListCount = fileList.Count;
 			inputMime = comboBox.SelectedItem.ToString();
@@ -76,6 +84,15 @@ namespace FSImageTo
 			labelMimeName.Text = $"Mime тип - { inputMime}" ?? "Mime тип -";
 			labelRelation.Text = $"Количество - {countItemsInMime} из {fileListCount} или {countItemsInMimePercent}%";
 			labelMediumSize.Text = $"Средний размер - {mediumSize} b";
+		}
+
+		private void buttonOpen_Click(object sender, EventArgs e)
+		{
+			if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+			{
+				
+				currentDir = folderBrowserDialog1.SelectedPath;
+			}
 		}
 	}
 }

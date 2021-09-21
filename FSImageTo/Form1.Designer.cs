@@ -46,6 +46,8 @@ namespace FSImageTo
 			this.labelMimeName = new System.Windows.Forms.Label();
 			this.labelRelation = new System.Windows.Forms.Label();
 			this.labelMediumSize = new System.Windows.Forms.Label();
+			this.buttonOpen = new System.Windows.Forms.Button();
+			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -130,7 +132,7 @@ namespace FSImageTo
 			// ScanBtn
 			// 
 			this.ScanBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.ScanBtn.Location = new System.Drawing.Point(12, 24);
+			this.ScanBtn.Location = new System.Drawing.Point(114, 30);
 			this.ScanBtn.Name = "ScanBtn";
 			this.ScanBtn.Size = new System.Drawing.Size(150, 60);
 			this.ScanBtn.TabIndex = 0;
@@ -142,7 +144,7 @@ namespace FSImageTo
 			// 
 			this.labelFileCount.AutoSize = true;
 			this.labelFileCount.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelFileCount.Location = new System.Drawing.Point(184, 70);
+			this.labelFileCount.Location = new System.Drawing.Point(270, 67);
 			this.labelFileCount.Name = "labelFileCount";
 			this.labelFileCount.Size = new System.Drawing.Size(119, 23);
 			this.labelFileCount.TabIndex = 4;
@@ -152,7 +154,7 @@ namespace FSImageTo
 			// 
 			this.labelCount.AutoSize = true;
 			this.labelCount.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelCount.Location = new System.Drawing.Point(184, 24);
+			this.labelCount.Location = new System.Drawing.Point(270, 24);
 			this.labelCount.Name = "labelCount";
 			this.labelCount.Size = new System.Drawing.Size(100, 23);
 			this.labelCount.TabIndex = 5;
@@ -162,7 +164,7 @@ namespace FSImageTo
 			// 
 			this.labelDirsCount.AutoSize = true;
 			this.labelDirsCount.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelDirsCount.Location = new System.Drawing.Point(184, 47);
+			this.labelDirsCount.Location = new System.Drawing.Point(270, 47);
 			this.labelDirsCount.Name = "labelDirsCount";
 			this.labelDirsCount.Size = new System.Drawing.Size(119, 23);
 			this.labelDirsCount.TabIndex = 6;
@@ -185,7 +187,7 @@ namespace FSImageTo
 			this.labelMimeName.AutoEllipsis = true;
 			this.labelMimeName.AutoSize = true;
 			this.labelMimeName.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelMimeName.Location = new System.Drawing.Point(368, 24);
+			this.labelMimeName.Location = new System.Drawing.Point(437, 24);
 			this.labelMimeName.Name = "labelMimeName";
 			this.labelMimeName.Size = new System.Drawing.Size(124, 23);
 			this.labelMimeName.TabIndex = 8;
@@ -195,7 +197,7 @@ namespace FSImageTo
 			// 
 			this.labelRelation.AutoSize = true;
 			this.labelRelation.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelRelation.Location = new System.Drawing.Point(368, 47);
+			this.labelRelation.Location = new System.Drawing.Point(437, 47);
 			this.labelRelation.Name = "labelRelation";
 			this.labelRelation.Size = new System.Drawing.Size(147, 23);
 			this.labelRelation.TabIndex = 9;
@@ -205,17 +207,29 @@ namespace FSImageTo
 			// 
 			this.labelMediumSize.AutoSize = true;
 			this.labelMediumSize.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelMediumSize.Location = new System.Drawing.Point(368, 70);
+			this.labelMediumSize.Location = new System.Drawing.Point(437, 67);
 			this.labelMediumSize.Name = "labelMediumSize";
 			this.labelMediumSize.Size = new System.Drawing.Size(193, 23);
 			this.labelMediumSize.TabIndex = 10;
 			this.labelMediumSize.Text = "Средний размер - ";
+			// 
+			// buttonOpen
+			// 
+			this.buttonOpen.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.buttonOpen.Location = new System.Drawing.Point(13, 30);
+			this.buttonOpen.Name = "buttonOpen";
+			this.buttonOpen.Size = new System.Drawing.Size(95, 60);
+			this.buttonOpen.TabIndex = 11;
+			this.buttonOpen.Text = "Открыть";
+			this.buttonOpen.UseVisualStyleBackColor = true;
+			this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(765, 487);
+			this.Controls.Add(this.buttonOpen);
 			this.Controls.Add(this.labelMediumSize);
 			this.Controls.Add(this.labelRelation);
 			this.Controls.Add(this.labelMimeName);
@@ -256,6 +270,8 @@ namespace FSImageTo
 		private System.Windows.Forms.Label labelMimeName;
 		private System.Windows.Forms.Label labelRelation;
 		private System.Windows.Forms.Label labelMediumSize;
+		private System.Windows.Forms.Button buttonOpen;
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
 	}
 }
 
