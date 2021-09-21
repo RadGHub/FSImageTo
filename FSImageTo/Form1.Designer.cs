@@ -29,6 +29,7 @@ namespace FSImageTo
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,6 +241,7 @@ namespace FSImageTo
 			this.Controls.Add(this.ScanBtn);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.menuStrip1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.MinimumSize = new System.Drawing.Size(640, 480);
 			this.Name = "Form1";
